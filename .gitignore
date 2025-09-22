@@ -15,7 +15,6 @@ pids
 
 # Dependency directories
 node_modules/
-
 # Build and output
 dist/
 build/
