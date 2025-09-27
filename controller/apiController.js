@@ -256,7 +256,7 @@ export const resumeReview = async (req, res) => {
     const databuffer = fs.readFileSync(resume.path);
     const pdfData = await pdf(databuffer);
 
-    const prompt = `Review the following resume and provide constructive feedback on its strengths, weaknesses, and areas for improvement. Resume Content:\n\n${pdfData.text}`;
+    const prompt = `Evaluate ATS score and review the following resume, provide constructive feedback on its strengths, weaknesses, and areas for improvement. Resume Content:\n\n${pdfData.text}`;
     const response = await openai.chat.completions.create({
       model: "gemini-2.0-flash",
       messages: [{ role: "user", content: prompt }],
@@ -277,4 +277,3 @@ export const resumeReview = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
-
